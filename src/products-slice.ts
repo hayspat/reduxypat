@@ -7,7 +7,7 @@ const initialState: IProductState = {
   getProductFilterList: ResponseModel,
 };
 
-export const asyncGetProducts = generateThunk(
+const asyncGetProducts = generateThunk(
   ThunkActionTypes.getProducts,
   Api.v1ProductGetproductfilterlistList
 );
@@ -54,4 +54,9 @@ const productListSlice = createSlice({
   },
 });
 
-export const productsSlice = productListSlice.reducer;
+export const ProductsActions = {
+  ...productListSlice.actions,
+  asyncGetProducts,
+};
+
+export const ProductsReducer = productListSlice.reducer;

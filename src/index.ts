@@ -1,12 +1,16 @@
 import { SliceTypes } from "./Helpers/enums";
-import { authSlice } from "./auth-slice";
-import { ordersSlice } from "./orders-slice";
-import { productsSlice } from "./products-slice";
-import { statisticsSlice } from "./statistics-slice";
+import { AuthReducer, AuthActions } from "./auth-slice";
+import { OrdersReducer, OrderActions } from "./orders-slice";
+import { ProductsReducer, ProductsActions } from "./products-slice";
 
-export default {
-  [SliceTypes.auth]: authSlice,
-  [SliceTypes.orders]: ordersSlice,
-  [SliceTypes.products]: productsSlice,
-  [SliceTypes.stats]: statisticsSlice,
+export const Slices = {
+  [SliceTypes.auth]: AuthReducer,
+  [SliceTypes.orders]: OrdersReducer,
+  [SliceTypes.products]: ProductsReducer,
+};
+
+export const Actions = {
+  Auth: AuthActions,
+  Order: OrderActions,
+  Product: ProductsActions,
 };

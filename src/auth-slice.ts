@@ -12,27 +12,27 @@ const initialState: IAuthState = {
   updateForgetPasswordRequest: ResponseModel,
 };
 
-export const verifyUser = generateThunk(
+const verifyUser = generateThunk(
   ThunkActionTypes.validateUser,
   Api.v1AuthenticationValidateuserCreate
 );
 
-export const getUserDetails = generateThunk(
+const getUserDetails = generateThunk(
   ThunkActionTypes.userDetails,
   Api.v1AuthenticationGetuserdetailsList
 );
 
-export const createForgotPassword = generateThunk(
+const createForgotPassword = generateThunk(
   ThunkActionTypes.createForgetPasswordRequest,
   Api.v1AuthenticationCreateforgetpasswordrequestCreate
 );
 
-export const validateForgotPassword = generateThunk(
+const validateForgotPassword = generateThunk(
   ThunkActionTypes.validateForgetPasswordRequest,
   Api.v1AuthenticationValidateforgetpasswordrequestCreate
 );
 
-export const updateForgetPassword = generateThunk(
+const updateForgetPassword = generateThunk(
   ThunkActionTypes.updateForgetPasswordRequest,
   Api.v1AuthenticationUpdateforgetpasswordrequestUpdate
 );
@@ -81,6 +81,13 @@ const AuthSlice = createSlice({
   },
 });
 
-export const { setToken } = AuthSlice.actions;
+export const AuthActions = {
+  ...AuthSlice.actions,
+  createForgotPassword,
+  verifyUser,
+  getUserDetails,
+  validateForgotPassword,
+  updateForgetPassword,
+};
 
-export const authSlice = AuthSlice.reducer;
+export const AuthReducer = AuthSlice.reducer;

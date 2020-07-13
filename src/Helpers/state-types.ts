@@ -32,12 +32,9 @@ export interface IAuthState {
   updateForgetPasswordRequest: IResponse<OperationResultDTO>;
 }
 
-export interface IStatisticsState {
-  getMerchantBranchSummary: IResponse<MerchantBranchSummaryDTO>;
-}
-
 export interface IOrderState {
   searchOrderAsync: IResponse<OrderSearchResponseDTOPagingDTO>;
+  getMerchantBranchSummary: IResponse<MerchantBranchSummaryDTO>;
 }
 
 export interface IProductState {

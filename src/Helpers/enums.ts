@@ -24,5 +24,5 @@ export enum ThunkActionTypes {
   createForgetPasswordRequest = "auth/createForgetPasswordRequest",
   validateForgetPasswordRequest = "auth/validateForgetPasswordRequest",
   updateForgetPasswordRequest = "auth/updateForgetPasswordRequest",
-  getMerchantBranchSummary = "stats/getMerchantBranchSummary",
+  getMerchantBranchSummary = "orders/getMerchantBranchSummary",
 }

@@ -5,16 +5,22 @@ import { ThunkActionTypes, SliceNames } from "./Helpers/enums";
 
 const initialState: IOrderState = {
   searchOrderAsync: ResponseModel,
+  getMerchantBranchSummary: ResponseModel,
 };
 
-export const asyncGetOrders = generateThunk(
+const asyncGetOrders = generateThunk(
   ThunkActionTypes.getOrders,
   Api.v1OrderSearchorderasyncCreate
 );
 
-export const asyncGetOrdersFake = generateThunk(
+const asyncGetOrdersFake = generateThunk(
   ThunkActionTypes.getOrdersFake,
   Api.v1OrderSearchorderasyncCreate
+);
+
+const getStats = generateThunk(
+  ThunkActionTypes.getMerchantBranchSummary,
+  Api.v1OrderGetmerchantbranchsummaryList
 );
 
 const orderListSlice = createSlice({
@@ -63,4 +69,11 @@ const orderListSlice = createSlice({
   },
 });
 
-export const ordersSlice = orderListSlice.reducer;
+export const OrderActions = {
+  ...orderListSlice.actions,
+  asyncGetOrders,
+  asyncGetOrdersFake,
+  getStats,
+};
+
+export const OrdersReducer = orderListSlice.reducer;
