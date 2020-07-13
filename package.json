@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "p-patch": "npm version patch && npm publish",
+    "p-major": "npm version major && npm publish",
+    "p-minor": "npm version minor && npm publish"
   },
   "keywords": [],
   "author": "",
