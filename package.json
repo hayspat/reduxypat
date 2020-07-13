@@ -1,6 +1,6 @@
 {
   "name": "reduxypat",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,6 +8,7 @@
     "p-patch": "npm version patch && npm publish",
     "p-major": "npm version major && npm publish",
     "p-minor": "npm version minor && npm publish",
+    "buildtypes": "swagger-typescript-api -p https://edakik.azurewebsites.net/swagger/v1/swagger.json -o ./src/Api -n api-types.ts --union-enums",
     "build": "tsc"
   },
   "keywords": [],
@@ -15,7 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
-    "@types/node": "^14.0.22"
+    "@types/node": "^14.0.22",
+    "swagger-typescript-api": "^1.10.0"
   },
   "devDependencies": {
     "typescript": "^3.9.6"
