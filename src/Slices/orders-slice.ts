@@ -83,7 +83,7 @@ const ordersSlice = createSlice({
         action.type.startsWith("order") && action.type.endsWith("/pending"),
       (state, action) => {
         const subSlice: keyof IOrderState = action.type.split("/")[1];
-        state[subSlice] = { ...action.payload, loading: false };
+        state[subSlice] = { ...action.payload, loading: true };
       }
     );
 

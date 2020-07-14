@@ -76,7 +76,7 @@ const authSelector = createSelector(
   (state) => state
 );
 
-export default {
+export const AuthSelectors = {
   authSelector,
   loadingSelector,
   tokenSelector,
