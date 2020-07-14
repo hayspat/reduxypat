@@ -37,15 +37,15 @@ import {
   UserAddressListResponseDTO,
 } from "../Api/api-types";
 
-export interface IResponse<T> extends OperationResultDTO {
-  response: T;
+export interface IResponse<T = null> extends OperationResultDTO {
+  response: T | null;
   loading: boolean;
   messages: OperationResultMessage[] | null;
   result: boolean;
 }
 
 export const ResponseModel = {
-  response: {},
+  response: null,
   loading: false,
   messages: [{}],
   result: false,
@@ -55,9 +55,9 @@ export interface IAuthState {
   validateUser: IResponse<ValidateUserResponseDTO>;
   registerUser: IResponse<RegisterUserResponseDTO>;
   userDetails: IResponse<GetUserDetailsResponseDTO>;
-  createForgetPasswordRequest: IResponse<{}>;
-  validateForgetPasswordRequest: IResponse<{}>;
-  updateForgetPasswordRequest: IResponse<{}>;
+  createForgetPasswordRequest: IResponse;
+  validateForgetPasswordRequest: IResponse;
+  updateForgetPasswordRequest: IResponse;
   insertUserAddress: IResponse<InsertUserAddressResponseDTO>;
   updateUserAddress: IResponse<UpdateUserAddressResponseDTO>;
   getUserAddresses: IResponse<UserAddressListResponseDTO>;
@@ -106,7 +106,7 @@ export interface ICarrierState {
   getCarrier: IResponse<GetCarrierResponseDTO>;
   getCarriers: IResponse<GetCarrierResponseDTOPagingDTO>;
   searchCarrier: IResponse<GetCarrierResponseDTOPagingDTO>;
-  deleteCarrier: IResponse<{}>;
+  deleteCarrier: IResponse;
   insertOrderDeliveryCode: IResponse<InsertOrderDeliveryCodeResponseDTO>;
   updateCarrierTrackingInfo: IResponse<UpdateCarrierTrackingInfoResponseDTO>;
   getCarrierTrackingInfo: IResponse<GetCarrierTrackingInfoResponseDTO>;
@@ -119,13 +119,13 @@ export interface ICampaignState {
   campaign: IResponse<CampaignResponseDTO>;
   campaigns: IResponse<CampaignResponseDTOPagingDTO>;
   searchCampaign: IResponse<CampaignResponseDTOPagingDTO>;
-  deleteCampaign: IResponse<{}>;
+  deleteCampaign: IResponse;
   insertSlider: IResponse<SliderResponseDTO>;
   updateSlider: IResponse<SliderResponseDTO>;
   slider: IResponse<SliderResponseDTO>;
   sliders: IResponse<SliderResponseDTOPagingDTO>;
   searchSlider: IResponse<SliderResponseDTOPagingDTO>;
-  deleteSlider: IResponse<{}>;
+  deleteSlider: IResponse;
 }
 
 export interface IMerchantState {

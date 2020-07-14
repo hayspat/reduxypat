@@ -42,17 +42,17 @@ const loadingSelector = createSelector(
 );
 
 const tokenSelector = createSelector(
-  (state: RootStateLib) => state.auth.validateUser.response.token,
+  (state: RootStateLib) => state.auth.validateUser.response?.token,
   (token) => token
 );
 
 const merchantBranchIdSelector = createSelector(
-  (state: RootStateLib) => state.auth.userDetails.response.merchantBranchId,
+  (state: RootStateLib) => state.auth.userDetails.response?.merchantBranchId,
   (merchantBranchId) => merchantBranchId
 );
 
 const refreshTokenSelector = createSelector(
-  (state: RootStateLib) => state.auth.validateUser.response.refreshToken,
+  (state: RootStateLib) => state.auth.validateUser.response?.refreshToken,
   (refreshToken) => refreshToken
 );
 
@@ -122,7 +122,7 @@ const insertedAddressErrorSelector = createSelector(
 );
 
 const addressListSelector = createSelector(
-  (state: RootStateLib) => state.auth.getUserAddresses.response.addressList,
+  (state: RootStateLib) => state.auth.getUserAddresses.response?.addressList,
   (addressList) => addressList
 );
 

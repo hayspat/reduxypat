@@ -78,7 +78,7 @@ enum ActiveOrderStatusTypes {
 }
 
 const activeLastOrderSelector = createSelector(
-  (state: RootStateLib) => state.orders.getOrdersByUserIdAsync.response.orders,
+  (state: RootStateLib) => state.orders.getOrdersByUserIdAsync.response?.orders,
   (orders) => {
     return [...(orders || [])].reverse().filter((_) => {
       return ActiveOrderStatusTypes[

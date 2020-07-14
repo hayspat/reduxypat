@@ -48,7 +48,7 @@ const removeBasketItemSuccessSelectors = createSelector(
 
 const basketItemSelector = createSelector(
   (state: RootStateLib) =>
-    state.basket.getUserBasketByAddressIdAsync.response.items,
+    state.basket.getUserBasketByAddressIdAsync.response?.items,
   (items) => items
 );
 

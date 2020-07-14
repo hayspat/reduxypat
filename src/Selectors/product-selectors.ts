@@ -50,7 +50,7 @@ const catalogSelector = createSelector(
 
 const categoriesSelector = createSelector(
   (state: RootStateLib) =>
-    state.products.getBaseCategories.response.baseCategories,
+    state.products.getBaseCategories.response?.baseCategories,
   (categories) => categories
 );
 

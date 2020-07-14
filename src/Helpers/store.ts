@@ -1,9 +1,4 @@
-import {
-  configureStore,
-  ThunkAction,
-  Action,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { Slices } from "../";
 
 const isDev = process.env.NODE_ENV !== "production";

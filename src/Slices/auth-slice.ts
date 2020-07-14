@@ -72,7 +72,11 @@ const AuthSlice = createSlice({
   initialState,
   reducers: {
     setToken: (state, action) => {
-      state.validateUser.response.token = action.payload;
+      if (state.validateUser.response) {
+        state.validateUser.response.token = action.payload;
+      } else {
+        state.validateUser.response = { token: action.payload };
+      }
     },
   },
   extraReducers: (builder) => {
