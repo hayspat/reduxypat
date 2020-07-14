@@ -83,6 +83,11 @@ const searchResultSelectorError = createSelector(
   (searchResultError) => searchResultError
 );
 
+const productTableSelector = createSelector(
+  (state: RootStateLib) => state.products.getProductFilterList,
+  (state) => state
+);
+
 export const ProductsSelector = {
   loadingSelector,
   catalogSelector,
@@ -92,4 +97,5 @@ export const ProductsSelector = {
   selectedCategoriesProductErrorSelector,
   searchResultSelector,
   searchResultSelectorError,
+  productTableSelector,
 };

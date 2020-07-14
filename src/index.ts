@@ -8,6 +8,9 @@ import { MerchantReducer, MerchantActions } from "./Slices/merchant-slice";
 import { Api as ApiInstance, withAuth as ApiAuth } from "./Api/api";
 import { SliceTypes } from "./Helpers/enums";
 import { AuthSelectors } from "./Selectors/auth-selectors";
+import { BasketSelector } from "./Selectors/basket-selectors";
+import { OrdersSelector } from "./Selectors/order-selectors";
+import { ProductsSelector } from "./Selectors/product-selectors";
 
 export const Slices = {
   [SliceTypes.auth]: AuthReducer,
@@ -31,6 +34,9 @@ export const Actions = {
 
 export const Selectors = {
   [SliceTypes.auth]: AuthSelectors,
+  [SliceTypes.basket]: BasketSelector,
+  [SliceTypes.orders]: OrdersSelector,
+  [SliceTypes.products]: ProductsSelector,
 };
 
 export const Api = ApiInstance;

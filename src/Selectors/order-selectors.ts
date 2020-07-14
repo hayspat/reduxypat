@@ -64,6 +64,11 @@ const orderSliceSelector = createSelector(
   (state) => state
 );
 
+const orderTableSelector = createSelector(
+  (state: RootStateLib) => state.orders.searchOrderAsync,
+  (state) => state
+);
+
 enum ActiveOrderStatusTypes {
   NEW = 1,
   PREPARING,
@@ -92,4 +97,5 @@ export const OrdersSelector = {
   orderSliceSelector,
   activeLastOrderSelector,
   loadingSelector,
+  orderTableSelector,
 };

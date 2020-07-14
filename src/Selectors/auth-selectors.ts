@@ -2,8 +2,43 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootStateLib } from "../Helpers/store";
 
 const loadingSelector = createSelector(
+  (state: RootStateLib) => state.auth.createForgetPasswordRequest.loading,
+  (state: RootStateLib) => state.auth.getCurrentUserAddress.loading,
+  (state: RootStateLib) => state.auth.getUserAddresses.loading,
+  (state: RootStateLib) => state.auth.insertUserAddress.loading,
+  (state: RootStateLib) => state.auth.registerUser.loading,
+  (state: RootStateLib) => state.auth.setCurrentUserAddress.loading,
+  (state: RootStateLib) => state.auth.updateForgetPasswordRequest.loading,
+  (state: RootStateLib) => state.auth.updateUserAddress.loading,
+  (state: RootStateLib) => state.auth.userDetails.loading,
+  (state: RootStateLib) => state.auth.validateForgetPasswordRequest.loading,
   (state: RootStateLib) => state.auth.validateUser.loading,
-  (loading) => loading
+
+  (
+    createForgetPasswordRequest,
+    getCurrentUserAddress,
+    getUserAddresses,
+    insertUserAddress,
+    registerUser,
+    setCurrentUserAddress,
+    updateForgetPasswordRequest,
+    updateUserAddress,
+    userDetails,
+    validateForgetPasswordRequest,
+    validateUser
+  ) => ({
+    createForgetPasswordRequest,
+    getCurrentUserAddress,
+    getUserAddresses,
+    insertUserAddress,
+    registerUser,
+    setCurrentUserAddress,
+    updateForgetPasswordRequest,
+    updateUserAddress,
+    userDetails,
+    validateForgetPasswordRequest,
+    validateUser,
+  })
 );
 
 const tokenSelector = createSelector(
