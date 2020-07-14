@@ -31,6 +31,10 @@ import {
   GetCarrierResponseDTO,
   CampaignResponseDTOPagingDTO,
   SliderResponseDTOPagingDTO,
+  InsertUserAddressResponseDTO,
+  UpdateUserAddressResponseDTO,
+  UserAddressItemResponseDTO,
+  UserAddressListResponseDTO,
 } from "../Api/api-types";
 
 export interface IResponse<T> extends OperationResultDTO {
@@ -54,6 +58,11 @@ export interface IAuthState {
   createForgetPasswordRequest: IResponse<{}>;
   validateForgetPasswordRequest: IResponse<{}>;
   updateForgetPasswordRequest: IResponse<{}>;
+  insertUserAddress: IResponse<InsertUserAddressResponseDTO>;
+  updateUserAddress: IResponse<UpdateUserAddressResponseDTO>;
+  getUserAddresses: IResponse<UserAddressListResponseDTO>;
+  getCurrentUserAddress: IResponse<UserAddressItemResponseDTO>;
+  setCurrentUserAddress: IResponse<UserAddressItemResponseDTO>;
 }
 
 export interface IBasketState {

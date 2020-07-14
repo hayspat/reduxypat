@@ -46,10 +46,10 @@ const getUserActiveOrder = generateThunk(
   Api.v1OrderGetuseractiveorderList
 );
 
-/* const getCarrierOrdersByOrderStatus = generateThunk(
+const getCarrierOrdersByOrderStatus = generateThunk(
   ThunkActionTypes.getCarrierOrdersByOrderStatus,
   Api.v1OrderGetcarrierordersbyorderstatusCreate
-); */
+);
 
 const getMerchantBranchSummary = generateThunk(
   ThunkActionTypes.getMerchantBranchSummary,
@@ -111,6 +111,7 @@ export const OrderActions = {
   updateOrder,
   updateOrderStatus,
   getUserActiveOrder,
+  getCarrierOrdersByOrderStatus,
 };
 
 export const OrdersReducer = ordersSlice.reducer;

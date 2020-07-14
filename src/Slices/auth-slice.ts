@@ -10,6 +10,11 @@ const initialState: IAuthState = {
   createForgetPasswordRequest: ResponseModel,
   validateForgetPasswordRequest: ResponseModel,
   updateForgetPasswordRequest: ResponseModel,
+  insertUserAddress: ResponseModel,
+  updateUserAddress: ResponseModel,
+  getUserAddresses: ResponseModel,
+  getCurrentUserAddress: ResponseModel,
+  setCurrentUserAddress: ResponseModel,
 };
 
 const verifyUser = generateThunk(
@@ -35,6 +40,31 @@ const validateForgotPassword = generateThunk(
 const updateForgetPassword = generateThunk(
   ThunkActionTypes.updateForgetPasswordRequest,
   Api.v1AuthenticationUpdateforgetpasswordrequestUpdate
+);
+
+const insertUserAddress = generateThunk(
+  ThunkActionTypes.insertUserAddress,
+  Api.v1AuthenticationInsertuseraddressCreate
+);
+
+const updateUserAddress = generateThunk(
+  ThunkActionTypes.updateUserAddress,
+  Api.v1AuthenticationUpdateuseraddressUpdate
+);
+
+const getUserAddresses = generateThunk(
+  ThunkActionTypes.getUserAddresses,
+  Api.v1AuthenticationGetuseraddressesList
+);
+
+const getCurrentUserAddress = generateThunk(
+  ThunkActionTypes.getCurrentUserAddress,
+  Api.v1AuthenticationGetcurrentuseraddressList
+);
+
+const setCurrentUserAddress = generateThunk(
+  ThunkActionTypes.setCurrentUserAddress,
+  Api.v1AuthenticationSetcurrentuseraddressUpdate
 );
 
 const AuthSlice = createSlice({
@@ -88,6 +118,11 @@ export const AuthActions = {
   getUserDetails,
   validateForgotPassword,
   updateForgetPassword,
+  insertUserAddress,
+  updateUserAddress,
+  getUserAddresses,
+  getCurrentUserAddress,
+  setCurrentUserAddress,
 };
 
 export const AuthReducer = AuthSlice.reducer;

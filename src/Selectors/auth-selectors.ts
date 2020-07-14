@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootStateLib } from "../Helpers/store";
 
 const loadingSelector = createSelector(
-  (state: RootStateLib) => state.auth,
+  (state: RootStateLib) => state.auth.validateUser.loading,
   (loading) => loading
 );
 
@@ -76,6 +76,26 @@ const authSelector = createSelector(
   (state) => state
 );
 
+const insertedAddressSelector = createSelector(
+  (state: RootStateLib) => state.auth.insertUserAddress.response,
+  (insertedAddress) => insertedAddress
+);
+
+const insertedAddressErrorSelector = createSelector(
+  (state: RootStateLib) => state.auth.insertUserAddress.messages,
+  (insertedAddressError) => insertedAddressError
+);
+
+const addressListSelector = createSelector(
+  (state: RootStateLib) => state.auth.getUserAddresses.response.addressList,
+  (addressList) => addressList
+);
+
+const addressListErrorSelector = createSelector(
+  (state: RootStateLib) => state.auth.getUserAddresses.messages,
+  (addressListError) => addressListError
+);
+
 export const AuthSelectors = {
   authSelector,
   loadingSelector,
@@ -92,4 +112,8 @@ export const AuthSelectors = {
   validateForgotPasswordSuccessSelector,
   rupdateForgotPasswordErrorSelector,
   updateForgotPasswordSuccessSelector,
+  insertedAddressSelector,
+  insertedAddressErrorSelector,
+  addressListSelector,
+  addressListErrorSelector,
 };

@@ -185,6 +185,16 @@ export interface UserAddressItemResponseDTO {
   creationTime?: string;
 }
 
+export interface UserAddressListResponseDTO {
+  addressList?: UserAddressItemResponseDTO[] | null | null;
+}
+
+export interface UserAddressListResponseDTOOperationResultDTO {
+  response?: UserAddressListResponseDTO | null;
+  result?: boolean;
+  messages?: OperationResultMessage[] | null | null;
+}
+
 export interface UserAddressItemResponseDTOOperationResultDTO {
   response?: UserAddressItemResponseDTO | null;
   result?: boolean;
@@ -779,8 +789,8 @@ export interface CarrierOrderListItem {
   products?: OrderProductItemListDTO[] | null | null;
 }
 
-export interface CarrierOrderListItemOperationResultDTO {
-  response?: CarrierOrderListItem | null;
+export interface CarrierOrderListItemListOperationResultDTO {
+  response?: CarrierOrderListItem[] | null | null;
   result?: boolean;
   messages?: OperationResultMessage[] | null | null;
 }
@@ -1187,7 +1197,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1AuthenticationGetuseraddressesList: (params?: RequestParams) =>
-      this.request<UserAddressItemResponseDTOOperationResultDTO, any>(
+      this.request<UserAddressListResponseDTOOperationResultDTO, any>(
         `/api/v1/authentication/getuseraddresses`,
         "GET",
         params,
@@ -1896,7 +1906,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1OrderGetcarrierordersbyorderstatusCreate: (data: GetCarrierOrderDTO, params?: RequestParams) =>
-      this.request<CarrierOrderListItemOperationResultDTO[], any>(
+      this.request<CarrierOrderListItemListOperationResultDTO, any>(
         `/api/v1/order/getcarrierordersbyorderstatus`,
         "POST",
         params,
