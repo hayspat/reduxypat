@@ -295,10 +295,113 @@ export interface RemoveBasketItemDTO {
   productItemId?: number;
 }
 
-export interface StringOperationResultDTO {
-  response?: string | null;
+export interface InsertCampaignRequestDTO {
+  title?: string | null;
+  merchantBranchId?: number;
+  subTitle?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
+  order?: number;
+}
+
+export interface CampaignResponseDTO {
+  id?: number;
+  title?: string | null;
+  subTitle?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
+  order?: number;
+}
+
+export interface CampaignResponseDTOOperationResultDTO {
+  response?: CampaignResponseDTO | null;
   result?: boolean;
   messages?: OperationResultMessage[] | null | null;
+}
+
+export interface UpdateCampaignRequestDTO {
+  campaignId?: number;
+  title?: string | null;
+  subTitle?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
+  order?: number;
+}
+
+export interface GetCampaignsRequestDTO {
+  merchantBranchId?: number;
+}
+
+export interface CampaignResponseDTOPagingDTO {
+  totalCount?: number;
+  pageIndex?: number;
+  pageSize?: number;
+  pageCount?: number;
+  data?: CampaignResponseDTO[] | null | null;
+}
+
+export interface CampaignResponseDTOPagingOperationDTO {
+  response?: CampaignResponseDTOPagingDTO | null;
+  result?: boolean;
+  messages?: OperationResultMessage[] | null | null;
+}
+
+export interface SearchCampaignsRequestDTO {
+  title?: string | null;
+  pageIndex?: number;
+  pageSize?: number;
+  orderBy?: string | null;
+  orderDir?: string | null;
+}
+
+export interface InsertSliderRequestDTO {
+  title?: string | null;
+  subTitle?: string | null;
+  imageUrl?: string | null;
+}
+
+export interface SliderResponseDTO {
+  id?: number;
+  title?: string | null;
+  subTitle?: string | null;
+  imageUrl?: string | null;
+}
+
+export interface SliderResponseDTOOperationResultDTO {
+  response?: SliderResponseDTO | null;
+  result?: boolean;
+  messages?: OperationResultMessage[] | null | null;
+}
+
+export interface UpdateSliderRequestDTO {
+  sliderId?: number;
+  title?: string | null;
+  subTitle?: string | null;
+  imageUrl?: string | null;
+}
+
+export type GetSlidersRequestDTO = object;
+
+export interface SliderResponseDTOPagingDTO {
+  totalCount?: number;
+  pageIndex?: number;
+  pageSize?: number;
+  pageCount?: number;
+  data?: SliderResponseDTO[] | null | null;
+}
+
+export interface SliderResponseDTOPagingOperationDTO {
+  response?: SliderResponseDTOPagingDTO | null;
+  result?: boolean;
+  messages?: OperationResultMessage[] | null | null;
+}
+
+export interface SearchSlidersRequestDTO {
+  title?: string | null;
+  pageIndex?: number;
+  pageSize?: number;
+  orderBy?: string | null;
+  orderDir?: string | null;
 }
 
 export interface InsertCarrierRequestDTO {
@@ -357,12 +460,16 @@ export interface GetCarrierListRequestDTO {
   orderDir?: string | null;
 }
 
-export interface GetCarrierResponseDTOPagingOperationResultDTO {
+export interface GetCarrierResponseDTOPagingDTO {
   totalCount?: number;
   pageIndex?: number;
   pageSize?: number;
   pageCount?: number;
-  response?: GetCarrierResponseDTO[] | null | null;
+  data?: GetCarrierResponseDTO[] | null | null;
+}
+
+export interface GetCarrierResponseDTOPagingOperationDTO {
+  response?: GetCarrierResponseDTOPagingDTO | null;
   result?: boolean;
   messages?: OperationResultMessage[] | null | null;
 }
@@ -443,107 +550,6 @@ export interface InsertCarrierTrackingInfoResponseDTOOperationResultDTO {
   response?: InsertCarrierTrackingInfoResponseDTO | null;
   result?: boolean;
   messages?: OperationResultMessage[] | null | null;
-}
-
-export interface InsertCampaignRequestDTO {
-  title?: string | null;
-  merchantBranchId?: number;
-  subTitle?: string | null;
-  description?: string | null;
-  imageUrl?: string | null;
-  order?: number;
-}
-
-export interface CampaignResponseDTO {
-  id?: number;
-  title?: string | null;
-  subTitle?: string | null;
-  description?: string | null;
-  imageUrl?: string | null;
-  order?: number;
-}
-
-export interface CampaignResponseDTOOperationResultDTO {
-  response?: CampaignResponseDTO | null;
-  result?: boolean;
-  messages?: OperationResultMessage[] | null | null;
-}
-
-export interface UpdateCampaignRequestDTO {
-  campaignId?: number;
-  title?: string | null;
-  subTitle?: string | null;
-  description?: string | null;
-  imageUrl?: string | null;
-  order?: number;
-}
-
-export interface GetCampaignsRequestDTO {
-  merchantBranchId?: number;
-}
-
-export interface CampaignResponseDTOPagingOperationResultDTO {
-  totalCount?: number;
-  pageIndex?: number;
-  pageSize?: number;
-  pageCount?: number;
-  response?: CampaignResponseDTO[] | null | null;
-  result?: boolean;
-  messages?: OperationResultMessage[] | null | null;
-}
-
-export interface SearchCampaignsRequestDTO {
-  title?: string | null;
-  pageIndex?: number;
-  pageSize?: number;
-  orderBy?: string | null;
-  orderDir?: string | null;
-}
-
-export interface InsertSliderRequestDTO {
-  title?: string | null;
-  subTitle?: string | null;
-  imageUrl?: string | null;
-}
-
-export interface SliderResponseDTO {
-  id?: number;
-  title?: string | null;
-  subTitle?: string | null;
-  imageUrl?: string | null;
-}
-
-export interface SliderResponseDTOOperationResultDTO {
-  response?: SliderResponseDTO | null;
-  result?: boolean;
-  messages?: OperationResultMessage[] | null | null;
-}
-
-export interface UpdateSliderRequestDTO {
-  sliderId?: number;
-  title?: string | null;
-  subTitle?: string | null;
-  imageUrl?: string | null;
-}
-
-export type GetSlidersRequestDTO = object;
-
-export interface SliderResponseDTOPagingOperationResultDTO {
-  totalCount?: number;
-  pageIndex?: number;
-  pageSize?: number;
-  pageCount?: number;
-  response?: SliderResponseDTO[] | null | null;
-  result?: boolean;
-  messages?: OperationResultMessage[] | null | null;
-}
-
-export interface SearchSlidersRequestDTO {
-  title?: string | null;
-  pageIndex?: number;
-  pageSize?: number;
-  orderBy?: string | null;
-  orderDir?: string | null;
 }
 
 export interface FileRequestDTO {
@@ -810,22 +816,30 @@ export interface SubCategoryWithProductsDTO {
   products?: ProductItemListDTO[] | null | null;
 }
 
-export interface SubCategoryWithProductsDTOPagingOperationResultDTO {
+export interface SubCategoryWithProductsDTOPagingDTO {
   totalCount?: number;
   pageIndex?: number;
   pageSize?: number;
   pageCount?: number;
-  response?: SubCategoryWithProductsDTO[] | null | null;
+  data?: SubCategoryWithProductsDTO[] | null | null;
+}
+
+export interface SubCategoryWithProductsDTOPagingOperationDTO {
+  response?: SubCategoryWithProductsDTOPagingDTO | null;
   result?: boolean;
   messages?: OperationResultMessage[] | null | null;
 }
 
-export interface ProductItemListDTOPagingOperationResultDTO {
+export interface ProductItemListDTOPagingDTO {
   totalCount?: number;
   pageIndex?: number;
   pageSize?: number;
   pageCount?: number;
-  response?: ProductItemListDTO[] | null | null;
+  data?: ProductItemListDTO[] | null | null;
+}
+
+export interface ProductItemListDTOPagingOperationDTO {
+  response?: ProductItemListDTOPagingDTO | null;
   result?: boolean;
   messages?: OperationResultMessage[] | null | null;
 }
@@ -893,12 +907,16 @@ export interface GetCategoryResponseDTO {
   icon?: string | null;
 }
 
-export interface GetCategoryResponseDTOPagingOperationResultDTO {
+export interface GetCategoryResponseDTOPagingDTO {
   totalCount?: number;
   pageIndex?: number;
   pageSize?: number;
   pageCount?: number;
-  response?: GetCategoryResponseDTO[] | null | null;
+  data?: GetCategoryResponseDTO[] | null | null;
+}
+
+export interface GetCategoryResponseDTOPagingOperationDTO {
+  response?: GetCategoryResponseDTOPagingDTO | null;
   result?: boolean;
   messages?: OperationResultMessage[] | null | null;
 }
@@ -1326,7 +1344,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1BasketRemovebasketitemasyncDelete: (data: RemoveBasketItemDTO, params?: RequestParams) =>
-      this.request<StringOperationResultDTO, any>(
+      this.request<BasketInfoDTOOperationResultDTO, any>(
         `/api/v1/basket/removebasketitemasync`,
         "DELETE",
         params,
@@ -1342,8 +1360,200 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1BasketRemoveuserbasketasyncDelete: (query?: { addressId?: number }, params?: RequestParams) =>
-      this.request<StringOperationResultDTO, any>(
+      this.request<OperationResultDTO, any>(
         `/api/v1/basket/removeuserbasketasync${this.addQueryParams(query)}`,
+        "DELETE",
+        params,
+        null,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignInsertCampaignCreate
+     * @request POST:/api/v1/campaign/insert-campaign
+     * @secure
+     */
+    v1CampaignInsertCampaignCreate: (data: InsertCampaignRequestDTO, params?: RequestParams) =>
+      this.request<CampaignResponseDTOOperationResultDTO, any>(
+        `/api/v1/campaign/insert-campaign`,
+        "POST",
+        params,
+        data,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignUpdateCampaignUpdate
+     * @request PUT:/api/v1/campaign/update-campaign
+     * @secure
+     */
+    v1CampaignUpdateCampaignUpdate: (data: UpdateCampaignRequestDTO, params?: RequestParams) =>
+      this.request<CampaignResponseDTOOperationResultDTO, any>(
+        `/api/v1/campaign/update-campaign`,
+        "PUT",
+        params,
+        data,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignCampaignList
+     * @request GET:/api/v1/campaign/campaign
+     * @secure
+     */
+    v1CampaignCampaignList: (query?: { campaignId?: number }, params?: RequestParams) =>
+      this.request<CampaignResponseDTOOperationResultDTO, any>(
+        `/api/v1/campaign/campaign${this.addQueryParams(query)}`,
+        "GET",
+        params,
+        null,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignCampaignsCreate
+     * @request POST:/api/v1/campaign/campaigns
+     * @secure
+     */
+    v1CampaignCampaignsCreate: (data: GetCampaignsRequestDTO, params?: RequestParams) =>
+      this.request<CampaignResponseDTOPagingOperationDTO, any>(
+        `/api/v1/campaign/campaigns`,
+        "POST",
+        params,
+        data,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignSearchCampaignCreate
+     * @request POST:/api/v1/campaign/search-campaign
+     * @secure
+     */
+    v1CampaignSearchCampaignCreate: (data: SearchCampaignsRequestDTO, params?: RequestParams) =>
+      this.request<CampaignResponseDTOPagingOperationDTO, any>(
+        `/api/v1/campaign/search-campaign`,
+        "POST",
+        params,
+        data,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignDeleteCampaignDelete
+     * @request DELETE:/api/v1/campaign/delete-campaign
+     * @secure
+     */
+    v1CampaignDeleteCampaignDelete: (query?: { campaignId?: number }, params?: RequestParams) =>
+      this.request<OperationResultDTO, any>(
+        `/api/v1/campaign/delete-campaign${this.addQueryParams(query)}`,
+        "DELETE",
+        params,
+        null,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignInsertSliderCreate
+     * @request POST:/api/v1/campaign/insert-slider
+     * @secure
+     */
+    v1CampaignInsertSliderCreate: (data: InsertSliderRequestDTO, params?: RequestParams) =>
+      this.request<SliderResponseDTOOperationResultDTO, any>(
+        `/api/v1/campaign/insert-slider`,
+        "POST",
+        params,
+        data,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignUpdateSliderUpdate
+     * @request PUT:/api/v1/campaign/update-slider
+     * @secure
+     */
+    v1CampaignUpdateSliderUpdate: (data: UpdateSliderRequestDTO, params?: RequestParams) =>
+      this.request<SliderResponseDTOOperationResultDTO, any>(
+        `/api/v1/campaign/update-slider`,
+        "PUT",
+        params,
+        data,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignSliderList
+     * @request GET:/api/v1/campaign/slider
+     * @secure
+     */
+    v1CampaignSliderList: (query?: { sliderId?: number }, params?: RequestParams) =>
+      this.request<SliderResponseDTOOperationResultDTO, any>(
+        `/api/v1/campaign/slider${this.addQueryParams(query)}`,
+        "GET",
+        params,
+        null,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignSlidersCreate
+     * @request POST:/api/v1/campaign/sliders
+     * @secure
+     */
+    v1CampaignSlidersCreate: (data: GetSlidersRequestDTO, params?: RequestParams) =>
+      this.request<SliderResponseDTOPagingOperationDTO, any>(
+        `/api/v1/campaign/sliders`,
+        "POST",
+        params,
+        data,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignSearchSliderCreate
+     * @request POST:/api/v1/campaign/search-slider
+     * @secure
+     */
+    v1CampaignSearchSliderCreate: (data: SearchSlidersRequestDTO, params?: RequestParams) =>
+      this.request<SliderResponseDTOPagingOperationDTO, any>(
+        `/api/v1/campaign/search-slider`,
+        "POST",
+        params,
+        data,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags Campaign
+     * @name v1CampaignDeleteSliderDelete
+     * @request DELETE:/api/v1/campaign/delete-slider
+     * @secure
+     */
+    v1CampaignDeleteSliderDelete: (query?: { sliderId?: number }, params?: RequestParams) =>
+      this.request<OperationResultDTO, any>(
+        `/api/v1/campaign/delete-slider${this.addQueryParams(query)}`,
         "DELETE",
         params,
         null,
@@ -1406,7 +1616,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1CarrierGetcarriersCreate: (data: GetCarrierListRequestDTO, params?: RequestParams) =>
-      this.request<GetCarrierResponseDTOPagingOperationResultDTO, any>(
+      this.request<GetCarrierResponseDTOPagingOperationDTO, any>(
         `/api/v1/carrier/getcarriers`,
         "POST",
         params,
@@ -1422,7 +1632,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1CarrierSearchcarrierCreate: (data: SearchCarrierRequestDTO, params?: RequestParams) =>
-      this.request<GetCarrierResponseDTOPagingOperationResultDTO, any>(
+      this.request<GetCarrierResponseDTOPagingOperationDTO, any>(
         `/api/v1/carrier/searchcarrier`,
         "POST",
         params,
@@ -1465,13 +1675,13 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags Carrier
-     * @name v1CarrierUpdatecarriertrakinginfoUpdate
-     * @request PUT:/api/v1/carrier/updatecarriertrakinginfo
+     * @name v1CarrierUpdatecarriertrackinginfoUpdate
+     * @request PUT:/api/v1/carrier/updatecarriertrackinginfo
      * @secure
      */
-    v1CarrierUpdatecarriertrakinginfoUpdate: (data: UpdateCarrierTrackingInfoRequestDTO, params?: RequestParams) =>
+    v1CarrierUpdatecarriertrackinginfoUpdate: (data: UpdateCarrierTrackingInfoRequestDTO, params?: RequestParams) =>
       this.request<UpdateCarrierTrackingInfoResponseDTOOperationResultDTO, any>(
-        `/api/v1/carrier/updatecarriertrakinginfo`,
+        `/api/v1/carrier/updatecarriertrackinginfo`,
         "PUT",
         params,
         data,
@@ -1481,13 +1691,13 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags Carrier
-     * @name v1CarrierGetcarriertrakinginfoCreate
-     * @request POST:/api/v1/carrier/getcarriertrakinginfo
+     * @name v1CarrierGetcarriertrackinginfoCreate
+     * @request POST:/api/v1/carrier/getcarriertrackinginfo
      * @secure
      */
-    v1CarrierGetcarriertrakinginfoCreate: (data: GetCarrierTrackingInfoRequestDTO, params?: RequestParams) =>
+    v1CarrierGetcarriertrackinginfoCreate: (data: GetCarrierTrackingInfoRequestDTO, params?: RequestParams) =>
       this.request<GetCarrierTrackingInfoResponseDTOOperationResultDTO, any>(
-        `/api/v1/carrier/getcarriertrakinginfo`,
+        `/api/v1/carrier/getcarriertrackinginfo`,
         "POST",
         params,
         data,
@@ -1507,198 +1717,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         "POST",
         params,
         data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignInsertCampaignCreate
-     * @request POST:/api/v1/compaign/insert-campaign
-     * @secure
-     */
-    v1CompaignInsertCampaignCreate: (data: InsertCampaignRequestDTO, params?: RequestParams) =>
-      this.request<CampaignResponseDTOOperationResultDTO, any>(
-        `/api/v1/compaign/insert-campaign`,
-        "POST",
-        params,
-        data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignUpdateCampaignUpdate
-     * @request PUT:/api/v1/compaign/update-campaign
-     * @secure
-     */
-    v1CompaignUpdateCampaignUpdate: (data: UpdateCampaignRequestDTO, params?: RequestParams) =>
-      this.request<CampaignResponseDTOOperationResultDTO, any>(
-        `/api/v1/compaign/update-campaign`,
-        "PUT",
-        params,
-        data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignCampaignList
-     * @request GET:/api/v1/compaign/campaign
-     * @secure
-     */
-    v1CompaignCampaignList: (query?: { campaignId?: number }, params?: RequestParams) =>
-      this.request<CampaignResponseDTOOperationResultDTO, any>(
-        `/api/v1/compaign/campaign${this.addQueryParams(query)}`,
-        "GET",
-        params,
-        null,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignCampaignsCreate
-     * @request POST:/api/v1/compaign/campaigns
-     * @secure
-     */
-    v1CompaignCampaignsCreate: (data: GetCampaignsRequestDTO, params?: RequestParams) =>
-      this.request<CampaignResponseDTOPagingOperationResultDTO, any>(
-        `/api/v1/compaign/campaigns`,
-        "POST",
-        params,
-        data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignSearchCampaignCreate
-     * @request POST:/api/v1/compaign/search-campaign
-     * @secure
-     */
-    v1CompaignSearchCampaignCreate: (data: SearchCampaignsRequestDTO, params?: RequestParams) =>
-      this.request<CampaignResponseDTOPagingOperationResultDTO, any>(
-        `/api/v1/compaign/search-campaign`,
-        "POST",
-        params,
-        data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignDeleteCampaignDelete
-     * @request DELETE:/api/v1/compaign/delete-campaign
-     * @secure
-     */
-    v1CompaignDeleteCampaignDelete: (query?: { campaignId?: number }, params?: RequestParams) =>
-      this.request<OperationResultDTO, any>(
-        `/api/v1/compaign/delete-campaign${this.addQueryParams(query)}`,
-        "DELETE",
-        params,
-        null,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignInsertSliderCreate
-     * @request POST:/api/v1/compaign/insert-slider
-     * @secure
-     */
-    v1CompaignInsertSliderCreate: (data: InsertSliderRequestDTO, params?: RequestParams) =>
-      this.request<SliderResponseDTOOperationResultDTO, any>(
-        `/api/v1/compaign/insert-slider`,
-        "POST",
-        params,
-        data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignUpdateSliderUpdate
-     * @request PUT:/api/v1/compaign/update-slider
-     * @secure
-     */
-    v1CompaignUpdateSliderUpdate: (data: UpdateSliderRequestDTO, params?: RequestParams) =>
-      this.request<SliderResponseDTOOperationResultDTO, any>(
-        `/api/v1/compaign/update-slider`,
-        "PUT",
-        params,
-        data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignSliderList
-     * @request GET:/api/v1/compaign/slider
-     * @secure
-     */
-    v1CompaignSliderList: (query?: { sliderId?: number }, params?: RequestParams) =>
-      this.request<SliderResponseDTOOperationResultDTO, any>(
-        `/api/v1/compaign/slider${this.addQueryParams(query)}`,
-        "GET",
-        params,
-        null,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignSlidersCreate
-     * @request POST:/api/v1/compaign/sliders
-     * @secure
-     */
-    v1CompaignSlidersCreate: (data: GetSlidersRequestDTO, params?: RequestParams) =>
-      this.request<SliderResponseDTOPagingOperationResultDTO, any>(
-        `/api/v1/compaign/sliders`,
-        "POST",
-        params,
-        data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignSearchSliderCreate
-     * @request POST:/api/v1/compaign/search-slider
-     * @secure
-     */
-    v1CompaignSearchSliderCreate: (data: SearchSlidersRequestDTO, params?: RequestParams) =>
-      this.request<SliderResponseDTOPagingOperationResultDTO, any>(
-        `/api/v1/compaign/search-slider`,
-        "POST",
-        params,
-        data,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags Compaign
-     * @name v1CompaignDeleteSliderDelete
-     * @request DELETE:/api/v1/compaign/delete-slider
-     * @secure
-     */
-    v1CompaignDeleteSliderDelete: (query?: { sliderId?: number }, params?: RequestParams) =>
-      this.request<OperationResultDTO, any>(
-        `/api/v1/compaign/delete-slider${this.addQueryParams(query)}`,
-        "DELETE",
-        params,
-        null,
         BodyType.Json,
         true,
       ),
@@ -1920,7 +1938,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       },
       params?: RequestParams,
     ) =>
-      this.request<SubCategoryWithProductsDTOPagingOperationResultDTO, any>(
+      this.request<SubCategoryWithProductsDTOPagingOperationDTO, any>(
         `/api/v1/product/getsubcategorieswithproductsandcategory${this.addQueryParams(query)}`,
         "GET",
         params,
@@ -1946,7 +1964,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       },
       params?: RequestParams,
     ) =>
-      this.request<ProductItemListDTOPagingOperationResultDTO, any>(
+      this.request<ProductItemListDTOPagingOperationDTO, any>(
         `/api/v1/product/searchproductbymerchantbranch${this.addQueryParams(query)}`,
         "GET",
         params,
@@ -1962,7 +1980,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1ProductGetproductlistbymerchantbranchList: (query?: { merchantBranchId?: number }, params?: RequestParams) =>
-      this.request<ProductItemListDTOPagingOperationResultDTO, any>(
+      this.request<ProductItemListDTOPagingOperationDTO, any>(
         `/api/v1/product/getproductlistbymerchantbranch${this.addQueryParams(query)}`,
         "GET",
         params,
@@ -2006,7 +2024,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       query?: { latitude?: number; longitude?: number },
       params?: RequestParams,
     ) =>
-      this.request<ProductItemListDTOPagingOperationResultDTO, any>(
+      this.request<ProductItemListDTOPagingOperationDTO, any>(
         `/api/v1/product/getproductlistbylatlong${this.addQueryParams(query)}`,
         "POST",
         params,
@@ -2019,7 +2037,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1ProductSearchproductsbylatlongCreate: (data: SearchProductsByLatLongRequestDTO, params?: RequestParams) =>
-      this.request<ProductItemListDTOPagingOperationResultDTO, any>(
+      this.request<ProductItemListDTOPagingOperationDTO, any>(
         `/api/v1/product/searchproductsbylatlong`,
         "POST",
         params,
@@ -2035,7 +2053,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1ProductSearchcategoryasyncCreate: (data: SearchCategoryRequestDTO, params?: RequestParams) =>
-      this.request<GetCategoryResponseDTOPagingOperationResultDTO, any>(
+      this.request<GetCategoryResponseDTOPagingOperationDTO, any>(
         `/api/v1/product/searchcategoryasync`,
         "POST",
         params,

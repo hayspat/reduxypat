@@ -1,7 +1,7 @@
 import { createSlice, AnyAction, SerializedError } from "@reduxjs/toolkit";
-import { ThunkActionTypes, SliceNames } from "./Helpers/enums";
-import { generateThunk, Api } from "./Api/api";
-import { ResponseModel, IAuthState } from "./Helpers/state-types";
+import { ThunkActionTypes, SliceNames } from "../Helpers/enums";
+import { generateThunk, Api } from "../Api/api";
+import { ResponseModel, IAuthState } from "../Helpers/state-types";
 
 const initialState: IAuthState = {
   validateUser: ResponseModel,
@@ -50,7 +50,7 @@ const AuthSlice = createSlice({
       (
         action: AnyAction
       ): action is AnyAction & { meta: { error: SerializedError } } =>
-        action.type.endsWith("/fulfilled"),
+        action.type.startsWith("auth") && action.type.endsWith("/fulfilled"),
       (state, action) => {
         const subSlice: keyof IAuthState = action.type.split("/")[1];
         state[subSlice] = { ...action.payload, loading: false };
@@ -61,7 +61,7 @@ const AuthSlice = createSlice({
       (
         action: AnyAction
       ): action is AnyAction & { meta: { error: SerializedError } } =>
-        action.type.endsWith("/pending"),
+        action.type.startsWith("auth") && action.type.endsWith("/pending"),
       (state, action) => {
         const subSlice: keyof IAuthState = action.type.split("/")[1];
         state[subSlice] = { ...action.payload, loading: true };
@@ -72,7 +72,7 @@ const AuthSlice = createSlice({
       (
         action: AnyAction
       ): action is AnyAction & { meta: { error: SerializedError } } =>
-        action.type.endsWith("/rejected"),
+        action.type.startsWith("auth") && action.type.endsWith("/rejected"),
       (state, action) => {
         const subSlice: keyof IAuthState = action.type.split("/")[1];
         state[subSlice] = { ...action.payload, loading: false };
