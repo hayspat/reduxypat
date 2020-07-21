@@ -1229,7 +1229,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     v1AuthenticationSetcurrentuseraddressUpdate: (query?: { addressId?: number }, params?: RequestParams) =>
-      this.request<any, any>(
+      this.request<UserAddressItemResponseDTOOperationResultDTO, any>(
         `/api/v1/authentication/setcurrentuseraddress${this.addQueryParams(query)}`,
         "PUT",
         params,
