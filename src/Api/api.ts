@@ -45,12 +45,15 @@ export const generateThunk = <
   >(actionType, async (data, thunkAPI) => {
     try {
       const state = thunkAPI.getState() as any;
+      console.log(state, "stateFromGetState");
       const { token } = state.auth.validateUser.response;
 
       const response = await fetchFn(
         data ?? (getHeadersForFetch(token) as any),
         getHeadersForFetch(token)
       );
+
+      console.log(response, "response");
 
       if (!response.result) {
         return thunkAPI.rejectWithValue(response);
