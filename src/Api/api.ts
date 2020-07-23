@@ -46,7 +46,7 @@ export const generateThunk = <
     try {
       const state = thunkAPI.getState() as any;
       console.log(state, "stateFromGetState");
-      const { token } = state.auth.validateUser.response;
+      const token = state.auth.validateUser?.response?.token;
 
       const response = await fetchFn(
         data ?? (getHeadersForFetch(token) as any),
