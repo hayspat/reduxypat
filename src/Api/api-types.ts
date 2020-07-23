@@ -30,7 +30,7 @@ export interface UpdateUserResponseDTOOperationResultDTO {
   messages?: OperationResultMessage[] | null | null;
 }
 
-export type StatusType = 0 | 1;
+export type StatusType = "Passive" | "Available";
 
 export interface InsertUserAddressRequestDTO {
   description?: string | null;
@@ -356,12 +356,14 @@ export interface CampaignResponseDTOPagingOperationDTO {
   messages?: OperationResultMessage[] | null | null;
 }
 
+export type OrderDir = "ASCEND" | "DESCEND";
+
 export interface SearchCampaignsRequestDTO {
   title?: string | null;
   pageIndex?: number;
   pageSize?: number;
   orderBy?: string | null;
-  orderDir?: string | null;
+  orderDir?: OrderDir;
 }
 
 export interface InsertSliderRequestDTO {
@@ -411,7 +413,7 @@ export interface SearchSlidersRequestDTO {
   pageIndex?: number;
   pageSize?: number;
   orderBy?: string | null;
-  orderDir?: string | null;
+  orderDir?: OrderDir;
 }
 
 export interface InsertCarrierRequestDTO {
@@ -467,7 +469,7 @@ export interface GetCarrierListRequestDTO {
   pageIndex?: number;
   pageSize?: number;
   orderBy?: string | null;
-  orderDir?: string | null;
+  orderDir?: OrderDir;
 }
 
 export interface GetCarrierResponseDTOPagingDTO {
@@ -489,7 +491,7 @@ export interface SearchCarrierRequestDTO {
   pageIndex?: number;
   pageSize?: number;
   orderBy?: string | null;
-  orderDir?: string | null;
+  orderDir?: OrderDir;
 }
 
 export interface InsertOrderDeliveryCodeRequestDTO {
@@ -683,7 +685,7 @@ export interface SearchOrderRequestDTO {
   pageIndex?: number;
   pageSize?: number;
   orderBy?: string | null;
-  orderDir?: string | null;
+  orderDir?: OrderDir;
 }
 
 export interface OrderSearchResponseDTO {
@@ -898,7 +900,7 @@ export interface SearchProductsByLatLongRequestDTO {
   pageIndex?: number;
   pageSize?: number;
   orderBy?: string | null;
-  orderDir?: string | null;
+  orderDir?: OrderDir;
 }
 
 export interface SearchCategoryRequestDTO {
@@ -906,7 +908,7 @@ export interface SearchCategoryRequestDTO {
   pageIndex?: number;
   pageSize?: number;
   orderBy?: string | null;
-  orderDir?: string | null;
+  orderDir?: OrderDir;
 }
 
 export interface GetCategoryResponseDTO {
@@ -1935,7 +1937,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @tags Product
      * @name v1ProductGetsubcategorieswithproductsandcategoryList
      * @request GET:/api/v1/product/getsubcategorieswithproductsandcategory
-     * @secure
      */
     v1ProductGetsubcategorieswithproductsandcategoryList: (
       query?: {
@@ -1944,7 +1945,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         pageIndex?: number;
         pageSize?: number;
         orderBy?: string;
-        orderDir?: string;
+        orderDir?: OrderDir;
       },
       params?: RequestParams,
     ) =>
@@ -1952,16 +1953,12 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         `/api/v1/product/getsubcategorieswithproductsandcategory${this.addQueryParams(query)}`,
         "GET",
         params,
-        null,
-        BodyType.Json,
-        true,
       ),
 
     /**
      * @tags Product
      * @name v1ProductSearchproductbymerchantbranchList
      * @request GET:/api/v1/product/searchproductbymerchantbranch
-     * @secure
      */
     v1ProductSearchproductbymerchantbranchList: (
       query?: {
@@ -1970,7 +1967,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         pageIndex?: number;
         pageSize?: number;
         orderBy?: string;
-        orderDir?: string;
+        orderDir?: OrderDir;
       },
       params?: RequestParams,
     ) =>
@@ -1978,32 +1975,24 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         `/api/v1/product/searchproductbymerchantbranch${this.addQueryParams(query)}`,
         "GET",
         params,
-        null,
-        BodyType.Json,
-        true,
       ),
 
     /**
      * @tags Product
      * @name v1ProductGetproductlistbymerchantbranchList
      * @request GET:/api/v1/product/getproductlistbymerchantbranch
-     * @secure
      */
     v1ProductGetproductlistbymerchantbranchList: (query?: { merchantBranchId?: number }, params?: RequestParams) =>
       this.request<ProductItemListDTOPagingOperationDTO, any>(
         `/api/v1/product/getproductlistbymerchantbranch${this.addQueryParams(query)}`,
         "GET",
         params,
-        null,
-        BodyType.Json,
-        true,
       ),
 
     /**
      * @tags Product
      * @name v1ProductGetproductfilterlistList
      * @request GET:/api/v1/product/getproductfilterlist
-     * @secure
      */
     v1ProductGetproductfilterlistList: (
       query?: {
@@ -2012,7 +2001,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         pageIndex?: number;
         pageSize?: number;
         orderBy?: string;
-        orderDir?: string;
+        orderDir?: OrderDir;
       },
       params?: RequestParams,
     ) =>
@@ -2020,9 +2009,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         `/api/v1/product/getproductfilterlist${this.addQueryParams(query)}`,
         "GET",
         params,
-        null,
-        BodyType.Json,
-        true,
       ),
 
     /**
@@ -2044,7 +2030,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @tags Product
      * @name v1ProductSearchproductsbylatlongCreate
      * @request POST:/api/v1/product/searchproductsbylatlong
-     * @secure
      */
     v1ProductSearchproductsbylatlongCreate: (data: SearchProductsByLatLongRequestDTO, params?: RequestParams) =>
       this.request<ProductItemListDTOPagingOperationDTO, any>(
@@ -2052,15 +2037,12 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         "POST",
         params,
         data,
-        BodyType.Json,
-        true,
       ),
 
     /**
      * @tags Product
      * @name v1ProductSearchcategoryasyncCreate
      * @request POST:/api/v1/product/searchcategoryasync
-     * @secure
      */
     v1ProductSearchcategoryasyncCreate: (data: SearchCategoryRequestDTO, params?: RequestParams) =>
       this.request<GetCategoryResponseDTOPagingOperationDTO, any>(
@@ -2068,63 +2050,48 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         "POST",
         params,
         data,
-        BodyType.Json,
-        true,
       ),
 
     /**
      * @tags Product
      * @name v1ProductGetbasecategoriesList
      * @request GET:/api/v1/product/getbasecategories
-     * @secure
      */
     v1ProductGetbasecategoriesList: (params?: RequestParams) =>
       this.request<GetBaseCategoriesResponseDTOOperationResultDTO, any>(
         `/api/v1/product/getbasecategories`,
         "GET",
         params,
-        null,
-        BodyType.Json,
-        true,
       ),
 
     /**
      * @tags Product
      * @name v1ProductGetsubcategoriesList
      * @request GET:/api/v1/product/getsubcategories
-     * @secure
      */
     v1ProductGetsubcategoriesList: (params?: RequestParams) =>
       this.request<GetSubCategoriesResponseDTOOperationResultDTO, any>(
         `/api/v1/product/getsubcategories`,
         "GET",
         params,
-        null,
-        BodyType.Json,
-        true,
       ),
 
     /**
      * @tags Product
      * @name v1ProductGetsubcategorieswithproductList
      * @request GET:/api/v1/product/getsubcategorieswithproduct
-     * @secure
      */
     v1ProductGetsubcategorieswithproductList: (params?: RequestParams) =>
       this.request<GetSubCategoriesResponseDTOOperationResultDTO, any>(
         `/api/v1/product/getsubcategorieswithproduct`,
         "GET",
         params,
-        null,
-        BodyType.Json,
-        true,
       ),
 
     /**
      * @tags Product
      * @name v1ProductGetproductdetailsCreate
      * @request POST:/api/v1/product/getproductdetails
-     * @secure
      */
     v1ProductGetproductdetailsCreate: (data: GetProductRequestDTO, params?: RequestParams) =>
       this.request<GetProductDetailResponseDTOOperationResultDTO, any>(
@@ -2132,8 +2099,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         "POST",
         params,
         data,
-        BodyType.Json,
-        true,
       ),
   };
 }
