@@ -121,6 +121,7 @@ export const OrderActions = {
   updateOrderStatus,
   getUserActiveOrder,
   getCarrierOrdersByOrderStatus,
+  searchOrderAsyncFake,
 };
 
 export const OrdersReducer = ordersSlice.reducer;
