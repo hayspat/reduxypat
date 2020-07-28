@@ -65,6 +65,7 @@ export enum ThunkActionTypes {
   getOrderByIdAsync = "order/getOrderByIdAsync",
   getOrdersByUserIdAsync = "order/getOrdersByUserIdAsync",
   searchOrderAsync = "orders/searchOrderAsync",
+  searchOrderAsyncFake = "fake/searchOrderAsync",
   updateOrderAsync = "order/updateOrderAsync",
   updateOrderStatusAsync = "order/updateOrderStatusAsync",
   getUserActiveOrder = "order/getUserActiveOrder",

@@ -20,6 +20,11 @@ const searchOrderAsync = generateThunk(
   Api.v1OrderSearchorderasyncCreate
 );
 
+const searchOrderAsyncFake = generateThunk(
+  ThunkActionTypes.searchOrderAsyncFake,
+  Api.v1OrderSearchorderasyncCreate
+);
+
 const insertOrder = generateThunk(
   ThunkActionTypes.insertOrderAsync,
   Api.v1OrderInsertorderasyncCreate
@@ -65,6 +70,10 @@ const ordersSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(searchOrderAsyncFake.fulfilled, (state, action) => {
+      state.searchOrderAsync = { ...(action.payload as any), loading: false };
+    });
+
     builder.addMatcher(
       (
         action: AnyAction
