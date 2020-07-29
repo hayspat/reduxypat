@@ -5,6 +5,7 @@ import {
 } from "../Api/api-types";
 import { getHeadersForFetch } from "../Helpers/util";
 import { AsyncThunk, createAsyncThunk } from "@reduxjs/toolkit";
+import { RootStateLib } from "../Helpers/store";
 
 export const ApiInstance = new ApiClass({
   baseUrl: process.env.REACT_APP_BACKEND_API_URL,
@@ -23,12 +24,17 @@ export const withAuth = async <
   return response;
 };
 
+interface FetchFunction<RequestDTO, ResponseDTO> {
+  (data: RequestDTO, params?: RequestParams): Promise<ResponseDTO>;
+  (params?: RequestParams): Promise<ResponseDTO>;
+}
+
 export const generateThunk = <
   RequestDTO,
   ResponseDTO extends OperationResultDTO
 >(
   actionType: string,
-  fetchFn: (data: RequestDTO, params?: RequestParams) => Promise<ResponseDTO>
+  fetchFn: FetchFunction<RequestDTO, ResponseDTO>
 ): AsyncThunk<
   ResponseDTO,
   RequestDTO,
@@ -44,13 +50,12 @@ export const generateThunk = <
     }
   >(actionType, async (data, thunkAPI) => {
     try {
-      const state = thunkAPI.getState() as any;
+      const state = thunkAPI.getState() as RootStateLib;
       const token = state.auth.validateUser?.response?.token;
 
-      const response = await fetchFn(
-        data ?? (getHeadersForFetch(token) as any),
-        getHeadersForFetch(token)
-      );
+      const response = data
+        ? await fetchFn(data, getHeadersForFetch(token))
+        : await fetchFn(getHeadersForFetch(token));
 
       if (!response.result) {
         return thunkAPI.rejectWithValue(response);
