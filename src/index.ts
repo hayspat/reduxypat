@@ -5,7 +5,7 @@ import { BasketReducer, BasketActions } from "./Slices/basket-slice";
 import { CampaignReducer, CampaignActions } from "./Slices/campaign-slice";
 import { CarrierReducer, CarrierActions } from "./Slices/carrier-slice";
 import { MerchantReducer, MerchantActions } from "./Slices/merchant-slice";
-import { Api as ApiInstance, withAuth as ApiAuth } from "./Api/api";
+import { Api as ApiInstance } from "./Api/api";
 import { SliceTypes } from "./Helpers/enums";
 import { AuthSelectors } from "./Selectors/auth-selectors";
 import { BasketSelector } from "./Selectors/basket-selectors";
@@ -40,4 +40,3 @@ export const Selectors = {
 };
 
 export const Api = ApiInstance;
-export const withAuth = ApiAuth;
