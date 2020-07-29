@@ -24,8 +24,11 @@ export const withAuth = async <
   return response;
 };
 
-interface FetchFunction<RequestDTO, ResponseDTO> {
+interface FetchFunction<RequestDTO, ResponseDTO = OperationResultDTO> {
   (data: RequestDTO, params?: RequestParams): Promise<ResponseDTO>;
+}
+
+interface FetchFunctionWithoutData<ResponseDTO> {
   (params?: RequestParams): Promise<ResponseDTO>;
 }
 
@@ -34,7 +37,9 @@ export const generateThunk = <
   ResponseDTO extends OperationResultDTO
 >(
   actionType: string,
-  fetchFn: FetchFunction<RequestDTO, ResponseDTO>
+  fetchFn:
+    | FetchFunction<RequestDTO, ResponseDTO>
+    | FetchFunctionWithoutData<ResponseDTO>
 ): AsyncThunk<
   ResponseDTO,
   RequestDTO,
