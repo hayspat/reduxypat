@@ -1,24 +1,8 @@
+import { RequestParams } from "../Api/api-types";
+
 export const getHeadersForFetch = (
   token?: string | null | undefined
-): {
-  credentials: "same-origin" | "include" | "omit" | undefined;
-  headers: {
-    "Content-Type": string;
-    Authorization: string;
-  };
-  redirect: "follow" | "error" | "manual" | undefined;
-  referrerPolicy:
-    | ""
-    | "same-origin"
-    | "no-referrer"
-    | "no-referrer-when-downgrade"
-    | "origin"
-    | "origin-when-cross-origin"
-    | "strict-origin"
-    | "strict-origin-when-cross-origin"
-    | "unsafe-url"
-    | undefined;
-} => ({
+): RequestParams => ({
   credentials: "same-origin",
   headers: {
     "Content-Type": "application/json",

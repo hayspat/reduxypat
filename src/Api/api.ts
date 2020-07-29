@@ -9,37 +9,15 @@ import { RootStateLib } from "../Helpers/store";
 
 export const ApiInstance = new ApiClass({
   baseUrl: process.env.REACT_APP_BACKEND_API_URL,
+  securityWorker: getHeadersForFetch,
 });
-
-export const withAuth = async <
-  RequestDTO,
-  ResponseDTO extends OperationResultDTO
->(
-  fetchFn: (data: RequestDTO, params?: RequestParams) => Promise<ResponseDTO>,
-  data: RequestDTO,
-  params?: RequestParams
-): Promise<ResponseDTO> => {
-  const response = await fetchFn(data, { ...params, ...getHeadersForFetch() });
-
-  return response;
-};
-
-interface FetchFunction<RequestDTO, ResponseDTO = OperationResultDTO> {
-  (data: RequestDTO, params?: RequestParams): Promise<ResponseDTO>;
-}
-
-interface FetchFunctionWithoutData<ResponseDTO> {
-  (params?: RequestParams): Promise<ResponseDTO>;
-}
 
 export const generateThunk = <
   RequestDTO,
   ResponseDTO extends OperationResultDTO
 >(
   actionType: string,
-  fetchFn:
-    | FetchFunction<RequestDTO, ResponseDTO>
-    | FetchFunctionWithoutData<ResponseDTO>
+  fetchFn: (data: RequestDTO, params?: RequestParams) => Promise<ResponseDTO>
 ): AsyncThunk<
   ResponseDTO,
   RequestDTO,
@@ -57,10 +35,10 @@ export const generateThunk = <
     try {
       const state = thunkAPI.getState() as RootStateLib;
       const token = state.auth.validateUser?.response?.token;
-
-      const response = data
-        ? await fetchFn(data, getHeadersForFetch(token))
-        : await fetchFn(getHeadersForFetch(token));
+      if (token) {
+        ApiInstance.setSecurityData(token);
+      }
+      const response = await fetchFn(data);
 
       if (!response.result) {
         return thunkAPI.rejectWithValue(response);
